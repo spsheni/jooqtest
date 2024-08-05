@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.test</groupId>
+    <artifactId>testparentproject</artifactId>
+    <version>1.0.0.develop-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>Parent Project for test</name>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- JDK -->
+        <jdk.source.version>21</jdk.source.version>
+        <jdk.target.version>21</jdk.target.version>
+        <!-- Libraries -->
+        <jooq.version>3.19.10</jooq.version>
+        <!-- plugin versions -->
+        <maven.compiler.plugin.version>3.13.0</maven.compiler.plugin.version>
+        <maven.resources.plugin.version>3.3.1</maven.resources.plugin.version>
+        <maven.jar.plugin.version>3.4.2</maven.jar.plugin.version>
+    </properties>
+    <modules>
+        <module>testjooq</module>
+    </modules>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven.compiler.plugin.version}</version>
+                    <configuration>
+                        <source>${jdk.source.version}</source>
+                        <target>${jdk.target.version}</target>
+                        <showDeprecation>true</showDeprecation>
+                        <compilerArgument>-Xlint:all</compilerArgument>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>${maven.resources.plugin.version}</version>
+                    <configuration>
+                        <propertiesEncoding>UTF-8</propertiesEncoding>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>${maven.jar.plugin.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.jooq</groupId>
+                <artifactId>jooq</artifactId>
+                <version>${jooq.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>
