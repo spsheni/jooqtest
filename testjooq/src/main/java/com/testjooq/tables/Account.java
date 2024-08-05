@@ -183,7 +183,7 @@ public class Account extends TableImpl<AccountRecord> {
     /**
      * Create an inline derived table from this table
      */
-    //@Override
+    @Override
     @PlainSQL
     public Account where(@Stringly.SQL String condition, Object... binds) {
         return where(DSL.condition(condition, binds));
